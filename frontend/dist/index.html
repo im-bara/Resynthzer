@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Resynthzer</title>
+  <script type="module" crossorigin src="/assets/index-iaBZ9551.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BPpt_Rpl.css">
+</head>
+<body>
+    <header class="titlebar" style="--wails-draggable:drag">
+        <span class="title-text">Resynthzer</span>
+    </header>
+
+    <div id="view-main-menu" class="view-container">
+        <div class="ambient-bg"></div>
+        <div class="menu-content floating">
+            <h1 class="main-title fade-up-1">Resynth<span class="muted-accent">zer</span></h1>
+            <p class="sub-title fade-up-2">Media Processing Engine</p>
+            <button id="btn-enter" class="btn-elegant fade-up-3">Buka Workspace</button>
+        </div>
+    </div>
+
+    <div id="view-workspace" class="view-container hidden layout">
+        <aside class="sidebar">
+            <nav class="menu">
+                <button class="menu-item active" data-target="tab-video">
+                    <span>Video Compressor</span>
+                    <span>& Upscale</span>
+                </button>
+                <button class="menu-item" data-target="tab-foto">
+                    <span>Foto Compressor</span>
+                    <span>& Upscale</span>
+                </button>
+                <button class="menu-item" data-target="tab-audio">
+                    <span>Audio Compressor</span>
+                </button>
+                <button class="menu-item" data-target="tab-settings">Settings</button>
+                <button class="menu-item" data-target="tab-info">Info</button>
+                <button class="menu-item" data-target="tab-about">About</button>
+            </nav>
+            <div class="sidebar-bottom">
+                <button id="btn-back" class="back-btn">
+                    <div class="icon-circle">&lt;</div>
+                    <span>Main Menu</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="content">
+            
+            <div id="tab-video" class="tab-content">
+                <div class="drop-zone">
+                    <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                    <p class="drop-text">Drop your video here</p>
+                    <p class="drop-limits">MP4, MOV, AVI up to 4GB</p>
+                </div>
+                
+                <p class="dev-note">*Dev Note : Estimated Time is based on your GPU Speed & Vram</p>
+
+                <div class="controls-section">
+                    <div class="control-group">
+                        <label class="control-label">Processing Mode (Video)</label>
+                        <div class="toggle-group">
+                            <button class="toggle-btn mode-upscale active">UpScale</button>
+                            <button class="toggle-btn mode-compress">Compress</button>
+                        </div>
+                    </div>
+
+                    <div class="panel-upscale">
+                        <div class="control-group">
+                            <label class="control-label">Processing Engine</label>
+                            <select class="custom-select engine-select">
+                                <option value="realesrgan">Real-ESRGAN (AI Upscale)</option>
+                                <option value="ffmpeg">FFmpeg (CPU Only)</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Target Resolution</label>
+                            <select class="custom-select resolution-select">
+                                <option value="2">HD to 2K</option>
+                                <option value="4">FHD to 4K</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">AI Model</label>
+                            <label class="radio-label"><input type="radio" name="video-ai" checked><span class="radio-custom"></span>Real-ESRGAN (General)</label>
+                        </div>
+                    </div>
+
+                    <div class="panel-compress hidden">
+                        <div class="control-group">
+                            <label class="control-label">Processing Engine</label>
+                            <select class="custom-select engine-select">
+                                <option value="ffmpeg">FFmpeg (CPU Only)</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Compression Quality (CRF)</label>
+                            <input type="range" min="1" max="50" value="23" class="slider">
+                            <span class="slider-val">23 (Balanced)</span>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Output Format</label>
+                            <select class="custom-select"><option>MP4 (H.264)</option><option>MKV (H.265)</option></select>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-execute btn-elegant" style="width: 100%; max-width: 600px; margin-top: 30px; border-color: var(--accent-cyan); color: var(--accent-cyan); font-weight: bold; font-size: 1.1rem; padding: 15px;">
+                Generate Output
+            </button>
+            </div>
+
+            <div id="tab-foto" class="tab-content hidden">
+                <div class="drop-zone">
+                    <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    <p class="drop-text">Drop your photo here</p>
+                    <p class="drop-limits">JPG, PNG, WEBP</p>
+                </div>
+                <div class="controls-section" style="margin-top: 20px;">
+                    <div class="control-group">
+                        <label class="control-label">Processing Mode (Photo)</label>
+                        <div class="toggle-group">
+                            <button class="toggle-btn mode-upscale active">UpScale</button>
+                            <button class="toggle-btn mode-compress">Compress</button>
+                        </div>
+                    </div>
+                    <div class="panel-upscale">
+                        <div class="control-group"><label class="control-label">Processing Engine</label><select class="custom-select engine-select"><option value="realesrgan">Real-ESRGAN (AI Upscale)</option><option value="ffmpeg">FFmpeg (Lanczos)</option></select></div>
+                        <div class="control-group"><label class="control-label">UpScale Factor</label><select class="custom-select resolution-select"><option value="2">2x Scale</option><option value="3">3x Scale</option><option value="4">4x Scale</option></select></div>
+                    </div>
+                    <div class="panel-compress hidden">
+                        <div class="control-group"><label class="control-label">Image Quality</label><input type="range" min="10" max="100" value="80" class="slider"><span class="slider-val">80%</span></div>
+                        <div class="control-group"><label class="control-label">Output Format</label><select class="custom-select"><option>JPG</option><option>WEBP</option></select></div>
+                    </div>
+                </div>
+                <button class="btn-execute btn-elegant" style="width: 100%; max-width: 600px; margin-top: 30px; border-color: var(--accent-cyan); color: var(--accent-cyan); font-weight: bold; font-size: 1.1rem; padding: 15px;">
+                Generate Output
+            </button>
+            </div>
+
+            <div id="tab-audio" class="tab-content hidden">
+                <div class="drop-zone">
+                    <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>
+                    <p class="drop-text">Drop your audio here</p>
+                </div>
+                <div class="controls-section" style="margin-top: 20px;">
+                    <div class="control-group">
+                        <label class="control-label">Audio Bitrate</label>
+                        <select class="custom-select"><option>128 kbps</option><option>192 kbps</option><option>320 kbps</option></select>
+                    </div>
+                </div>
+                <button class="btn-execute btn-elegant" style="width: 100%; max-width: 600px; margin-top: 30px; border-color: var(--accent-cyan); color: var(--accent-cyan); font-weight: bold; font-size: 1.1rem; padding: 15px;">
+                    Generate Output
+                </button>
+            </div>
+
+           <div id="tab-settings" class="tab-content hidden">
+                <h2 style="color: var(--accent-cyan);">Global Settings</h2>
+                <div class="controls-section">
+                    
+                    <div class="control-group">
+                        <label class="control-label">VRAM Usage Mode (Base Tile Size)</label>
+                        <select class="custom-select" id="setting-vram">
+                            <option value="gaming">Safe Mode (128)</option>
+                            <option value="potato">Potato Mode (64)</option>
+                            <option value="beast">Beast Mode (512)</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Output Directory</label>
+                        <button id="btn-select-dir" class="btn-elegant" style="width:100%; border:1px dashed var(--accent-cyan); color: var(--accent-cyan);">Select Folder...</button>
+                        <p id="output-dir-text" style="font-size: 13px; color: var(--text-muted); margin-top: 10px; word-break: break-all;">Default Output: (App Folder)/Output/</p>
+                    </div>
+                </div>
+            </div>
+            <div id="tab-info" class="tab-content hidden text-block">
+                <h2 style="color: var(--accent-green);">Information</h2>
+                <p><strong>Resynthzer</strong> adalah aplikasi open-source gratis untuk membantu kamu meng-upscale dan mengompres foto maupun video dengan cepat. Semua orang boleh menggunakannya, mempelajari cara kerjanya, dan mengembangkan versinya sendiri.</p>
+                <p>Pilih media, tentukan mode dan engine, lalu klik <strong>Generate Output</strong>. Resynthzer menangani proses pemrosesan secara lokal di komputer kamu, sehingga file media tidak perlu diunggah ke layanan online.</p>
+                <p>Gunakan <strong>Real-ESRGAN</strong> untuk peningkatan berbasis AI, atau <strong>FFmpeg</strong> untuk scaling dan kompresi yang ringan. Performa dan waktu proses bergantung pada ukuran media serta kemampuan CPU, GPU, dan VRAM perangkat.</p>
+                <p>Resynthzer masih dalam tahap pengembangan. Pastikan FFmpeg dan Real-ESRGAN tersedia di folder tools aplikasi sebelum memulai proses.</p>
+                <section class="license-section">
+                    <h3>Licenses</h3>
+                    <p><strong>Resynthzer</strong> is free software licensed under the <strong>GNU General Public License, version 3 (GPLv3)</strong>. You may use, study, modify, and redistribute it under the terms of that license.</p>
+                    <h3>Third-Party Software</h3>
+                    <p><strong>FFmpeg (bundled full build)</strong> is distributed under the <strong>GNU General Public License, version 3 (GPLv3)</strong> because this build includes GPL-licensed components. The complete license notice shipped with the executable is available in <strong>tools/ffmpeg/LICENSE</strong>.</p>
+                    <p><strong>Real-ESRGAN</strong> is distributed under the <strong>MIT License</strong>. The bundled notice also contains the separate MIT License notice for <strong>realsr-ncnn-vulkan</strong>, which is used by the Real-ESRGAN executable.</p>
+                    <p><strong>Real-ESRGAN model files</strong> are distributed with the application as separate assets. Their attribution and license terms may differ from the executable, so retain the included model files and notices when redistributing them.</p>
+                    <p>Resynthzer is an independent application and is not affiliated with the Real-ESRGAN, realsr-ncnn-vulkan, or FFmpeg projects. Please retain the original license notices when redistributing these components.</p>
+                </section>
+            </div>
+
+            <div id="tab-about" class="tab-content hidden text-block">
+                <h2 style="color: var(--accent-red);">About Resynthzer</h2>
+                <p>Version: 1.2.5</p>
+                <p>- Add audio compression feature</p>
+                <p>- Add VRAM usage mode settings</p>
+                <p>- Fixes and improvements</p>
+
+                <p>Minor Patch</p>
+                <p>- Fixes and improvements (1.2.5)</p>
+                <p>- Add NSIS installer</p>
+                <p>- HOT FIX some Bug about The App can't start properly</p>
+                <p>- HOT FIX performance issues on certain hardware configurations</p>
+                <p>Author: Bara Knight</p>
+                <p>Resynthzer License: GNU General Public License v3.0 (GPLv3)</p>
+            </div>
+
+        </main>
+    </div>
+
+    <div id="status-toast" class="status-toast" role="status" aria-live="polite" aria-hidden="true">
+        <div class="status-indicator"></div>
+        <div class="status-copy">
+            <strong id="status-title">Resynthzer</strong>
+            <span id="status-message"></span>
+        </div>
+        <button id="status-close" class="status-close" type="button" aria-label="Close notification">&times;</button>
+    </div>
+
+    <div id="progress-dock" class="progress-dock" aria-live="polite" aria-hidden="true">
+        <div class="progress-track"><div id="progress-fill" class="progress-fill"></div></div>
+    </div>
+
+</body>
+</html>
