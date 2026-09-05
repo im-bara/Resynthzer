@@ -4,7 +4,7 @@
 ![Real-ESRGAN](https://img.shields.io/badge/Real--ESRGAN-NCNN_Vulkan-blue?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-GPL_v3-yellow?style=for-the-badge)
 
-**Resynthzer** is a blazing-fast, lightweight, open-source GUI desktop application for media processing. Built with **Go** and **Wails**, it harnesses the raw power of **FFmpeg** and **Real-ESRGAN AI** to compress and upscale your videos, images, and audio seamlessly—without the bloated size of commercial software.
+**Resynthzer** is a blazing-fast, lightweight, open-source GUI desktop application for media processing. Built with **Go** and **Wails**, it harnesses the raw power of **FFmpeg** and **Real-ESRGAN AI** to compress and upscale your videos, images, and audio seamlessly without the bloated size of commercial software.
 
 ---
 
